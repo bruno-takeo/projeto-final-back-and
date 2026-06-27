@@ -1,5 +1,7 @@
 from fastapi import FastAPI
+
 from app.db.database import Base, engine
+from app.models import Usuario
 
 app = FastAPI(
     title="API Raízes do Nordeste",
