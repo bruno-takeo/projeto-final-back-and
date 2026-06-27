@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.db.database import Base, engine
 
 app = FastAPI(
     title="API Raízes do Nordeste",
@@ -6,6 +7,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def home():
