@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.schemas.usuario import UsuarioCreate, UsuarioResponse
 from app.services.usuario_service import criar_usuario
+from app.models.usuario import Usuario
+from app.security.dependencies import obter_usuario_logado
 
 router = APIRouter(
     prefix="/usuarios",
@@ -20,3 +22,7 @@ def cadastrar_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
             status_code=status.HTTP_409_CONFLICT,
             detail=str(erro)
         )
+    
+@router.get("/me", response_model=UsuarioResponse)
+def consultar_meu_usuario(usuario_logado: Usuario = Depends(obter_usuario_logado)):
+    return usuario_logado
