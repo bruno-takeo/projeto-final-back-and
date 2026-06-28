@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 
 from app.models.usuario import Usuario
 from app.schemas.usuario import UsuarioCreate
+from app.security.password import gerar_hash_senha
 
 
 def criar_usuario(db: Session, usuario: UsuarioCreate) -> Usuario:
@@ -13,7 +14,7 @@ def criar_usuario(db: Session, usuario: UsuarioCreate) -> Usuario:
     novo_usuario = Usuario(
         nome=usuario.nome,
         email=usuario.email,
-        senha_hash=usuario.senha,
+        senha_hash=gerar_hash_senha(usuario.senha),
         perfil=usuario.perfil,
         consentimento_lgpd=usuario.consentimento_lgpd,
     )
