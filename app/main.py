@@ -7,6 +7,7 @@ from app.api import auth
 from app.api import produto
 from app.api import unidade, estoque
 from app.api import pedido
+from app.api import pagamento
 
 app = FastAPI(
     title="API Raízes do Nordeste",
@@ -20,6 +21,7 @@ app.include_router(produto.router)
 app.include_router(unidade.router)
 app.include_router(estoque.router)
 app.include_router(pedido.router)
+app.include_router(pagamento.router)
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
