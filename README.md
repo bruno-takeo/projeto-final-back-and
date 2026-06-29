@@ -200,6 +200,14 @@ GET /pedidos/1
 
 O pedido deverá retornar com status `PAGO`.
 
+## Estrutura do Repositório
+
+- app/ → Código-fonte da API
+- docs/diagramas → Diagramas utilizados no trabalho
+- docs/evidencias → Evidências dos testes realizados
+- requirements.txt → Dependências do projeto
+- raizes_do_nordeste.db → Banco SQLite utilizado durante o desenvolvimento
+
 ## Autor
 
 Bruno Takeo Barbosa Kaahara
